@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>बेसिक कैलकुलेटर किट - Basic Calculator Kit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4a90e2, #63b3ed);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h2 {
+            color: #2d3748;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #4a5568;
+            margin: 20px 0 15px;
+            font-size: 1.4rem;
+        }
+        
+        .features-list, .users-list, .models-list {
+            list-style-type: none;
+        }
+        
+        .features-list li, .users-list li, .models-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .features-list li:before {
+            content: "✓";
+            color: #48bb78;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .users-list li:before {
+            content: "👤";
+            position: absolute;
+            left: 0;
+        }
+        
+        .models-list li:before {
+            content: "🛒";
+            position: absolute;
+            left: 0;
+        }
+        
+        .calculator-display {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .calculator {
+            background: #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        
+        .calculator-screen {
+            background: #1a202c;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: right;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            word-break: break-all;
+        }
+        
+        .calculator-keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        button {
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background: #edf2f7;
+            transform: translateY(-2px);
+        }
+        
+        .operator {
+            background: #4a90e2;
+            color: white;
+        }
+        
+        .operator:hover {
+            background: #3a7bc8;
+        }
+        
+        .equals {
+            background: #48bb78;
+            color: white;
+            grid-column: span 2;
+        }
+        
+        .equals:hover {
+            background: #38a169;
+        }
+        
+        .clear {
+            background: #f56565;
+            color: white;
+        }
+        
+        .clear:hover {
+            background: #e53e3e;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>बेसिक कैलकुलेटर किट</h1>
+            <p class="subtitle">Basic Calculator Kit (School Shuru Karne Wale Bachhon Ke Liye)</p>
+        </header>
+        
+        <section class="content-section">
+            <h2>परिचय</h2>
+            <p>यह सरल कैलकुलेटर होते हैं जो जोड़, घटाव, गुणा और भाग के लिए उपयोग किए जाते हैं। ये प्राथमिक विद्यालय के बच्चों के लिए आदर्श हैं और घर या छोटे-मोटे दुकान के हिसाब के लिए उपयुक्त हैं।</p>
+        </section>
+        
+        <section class="content-section">
+            <h2>खास विशेषताएं (Features)</h2>
+            <ul class="features-list">
+                <li>बेसिक कैलकुलेशन (+, -, ×, ÷)</li>
+                <li>मेमोरी फंक्शन (M+, M-, MR, MC)</li>
+                <li>प्रतिशत (%) की</li>
+                <li>वर्गमूल (√)</li>
+                <li>बैटरी और सोलर पावर्ड दोनों</li>
+                <li>हल्का और टिकाऊ बॉडी</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>कौन इस्तेमाल करे? (Kaun Istemaal Kare?)</h2>
+            <ul class="users-list">
+                <li>प्राथमिक विद्यालय के बच्चे</li>
+                <li>घर या छोटी-मोटी दुकान के हिसाब के लिए</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>लोकप्रिय मॉडल (Popular Models)</h2>
+            <ul class="models-list">
+                <li>Casio MJ-12D / MJ-120D</li>
+                <li>Orpat OR-112</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>कैलकुलेटर डेमो</h2>
+            <div class="calculator-display">
+                <div class="calculator">
+                    <div class="calculator-screen" id="display">0</div>
+                    <div class="calculator-keys">
+                        <button class="clear" onclick="clearDisplay()">C</button>
+                        <button class="operator" onclick="appendToDisplay('/')">/</button>
+                        <button class="operator" onclick="appendToDisplay('*')">×</button>
+                        <button class="operator" onclick="appendToDisplay('-')">-</button>
+                        <button onclick="appendToDisplay('7')">7</button>
+                        <button onclick="appendToDisplay('8')">8</button>
+                        <button onclick="appendToDisplay('9')">9</button>
+                        <button class="operator" onclick="appendToDisplay('+')">+</button>
+                        <button onclick="appendToDisplay('4')">4</button>
+                        <button onclick="appendToDisplay('5')">5</button>
+                        <button onclick="appendToDisplay('6')">6</button>
+                        <button onclick="appendToDisplay('.')">.</button>
+                        <button onclick="appendToDisplay('1')">1</button>
+                        <button onclick="appendToDisplay('2')">2</button>
+                        <button onclick="appendToDisplay('3')">3</button>
+                        <button class="equals" onclick="calculate()">=</button>
+                        <button onclick="appendToDisplay('0')" style="grid-column: span 2;">0</button>
+                        <button onclick="calculateSquareRoot()">√</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2023 बेसिक कैलकुलेटर किट - सभी अधिकार सुरक्षित</p>
+        </footer>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let currentInput = '0';
+        let operator = null;
+        let previousInput = '';
+        
+        function updateDisplay() {
+            display.textContent = currentInput;
+        }
+        
+        function appendToDisplay(value) {
+            if (currentInput === '0' && value !== '.') {
+                currentInput = value;
+            } else {
+                currentInput += value;
+            }
+            updateDisplay();
+        }
+        
+        function clearDisplay() {
+            currentInput = '0';
+            operator = null;
+            previousInput = '';
+            updateDisplay();
+        }
+        
+        function calculate() {
+            try {
+                // Replace × with * for evaluation
+                let expression = currentInput.replace(/×/g, '*');
+                currentInput = eval(expression).toString();
+                updateDisplay();
+            } catch (error) {
+                currentInput = 'Error';
+                updateDisplay();
+                setTimeout(() => {
+                    clearDisplay();
+                }, 1500);
+            }
+        }
+        
+        function calculateSquareRoot() {
+            try {
+                currentInput = Math.sqrt(parseFloat(currentInput)).toString();
+                updateDisplay();
+            } catch (error) {
+                currentInput = 'Error';
+                updateDisplay();
+                setTimeout(() => {
+                    clearDisplay();
+                }, 1500);
+            }
+        }
+        
+        // Initialize display
+        updateDisplay();
+    </script>
+</body>
+</html>
